@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/ns1/ns1-python/blob/master/ns1/rest/resource.py
+docs: https://ns1.com/api
+notes: >-
+  NS1 (IBM NS1 Connect) authenticates every REST request with an API key sent in
+  the X-NSONE-Key request header. There is no OAuth2/OIDC surface; keys are issued
+  from the NS1 portal and can be scoped per team/user with granular permissions.
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  oauth2_flows: []
+schemes:
+  - name: apiKey
+    type: apiKey
+    in: header
+    parameter_name: X-NSONE-Key
+    description: >-
+      NS1 API key issued from the portal (Account > Users & Teams > API Keys).
+      Sent verbatim in the X-NSONE-Key header on every request to
+      https://api.nsone.net/v1/. Verified live: an unauthenticated request to
+      https://api.nsone.net/v1/zones returns HTTP 401.
+    sources: [github.com/ns1/ns1-python]

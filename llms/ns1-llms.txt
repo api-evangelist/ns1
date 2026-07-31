@@ -1,0 +1,38 @@
+# NS1 (IBM NS1 Connect)
+
+> NS1, delivered as IBM NS1 Connect, is a managed authoritative DNS, traffic
+> management, and DDI platform. Its data-driven DNS steers traffic using real-time
+> telemetry (Pulsar RUM), health-check monitoring, and filter-chain steering
+> policies. Everything is programmable through the NS1 REST API at
+> https://api.nsone.net/v1, authenticated with an X-NSONE-Key API key.
+
+## API
+- [NS1 Connect API reference](https://developer.ibm.com/apis/catalog/ns1--ibm-ns1-connect-api/Introduction): REST/JSON API for zones, records, filter chains, monitoring, data feeds, accounts, and stats. Base URL https://api.nsone.net/v1/.
+- [Legacy API docs](https://ns1.com/api): original NS1 API documentation entry point.
+- [IBM NS1 Connect documentation](https://www.ibm.com/docs/en/ns1-connect): product and API documentation.
+
+## Authentication
+- API key in the `X-NSONE-Key` request header (see authentication/ns1-authentication.yml).
+- Per-key/per-resource token-bucket rate limiting surfaced via `X-RateLimit-By`, `X-RateLimit-Limit`, `X-RateLimit-Period`, `X-RateLimit-Remaining` (see conventions/ns1-conventions.yml).
+
+## SDKs & Tooling
+- [ns1-python](https://github.com/ns1/ns1-python): official Python SDK (`pip install ns1_python`).
+- [ns1-go](https://github.com/ns1/ns1-go): official Go SDK (`go get gopkg.in/ns1/ns1-go.v2`).
+- [ns1-js](https://github.com/ns1/ns1-js): JavaScript client (`npm install ns1`).
+- [Terraform provider ns1/ns1](https://registry.terraform.io/providers/ns1/ns1/latest): official Terraform provider.
+- [ns1-cli](https://github.com/ns1/ns1-cli): `ns1` command line interface and REPL (`pip install ns1cli`).
+- [ns1-ansible-modules](https://github.com/ns1/ns1-ansible-modules): Ansible integration modules.
+
+## Specs & Artifacts
+- [Pulsar Bulk Beacon protobuf](grpc/ns1-bulkbeacon.proto): gRPC/HTTP schema for bulk RUM performance-data ingestion.
+- [Conventions](conventions/ns1-conventions.yml)
+- [Error catalog](errors/ns1-error-codes.yml)
+- [Lifecycle](lifecycle/ns1-lifecycle.yml)
+- [Packages](packages/ns1-packages.yml)
+- [Well-known probe index](well-known/ns1-well-known.yml)
+- [Domain security probe](security/ns1-domain-security.yml)
+
+## About
+- [GitHub organization](https://github.com/ns1)
+- [Product page](https://www.ibm.com/products/ns1-connect)
+- NS1 was acquired by IBM in 2022; the api.nsone.net host and v1 API contract are unchanged.

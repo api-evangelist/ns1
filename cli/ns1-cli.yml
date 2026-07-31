@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/ns1/ns1-cli
+notes: >-
+  ns1cli is NS1's first-party command line program and interactive REPL for the
+  NS1 (Data Driven DNS) platform. It wraps the NS1 Python client to talk to the
+  NS1 API. The repository is archived, but it remains the documented CLI surface.
+binary: ns1
+package:
+  registry: pypi
+  name: ns1cli
+  install: pip install ns1cli
+usage: 'ns1 [OPTIONS] COMMAND [ARGS]...'
+repl: >-
+  Running `ns1` with no command opens the NS1 console (interactive REPL) that
+  accepts the same commands.
+status: archived
+uses: https://github.com/ns1/nsone-python
+commands:
+  - name: zone
+    description: View and modify zone SOA data.
+  - name: record
+    description: View and modify records in a zone (answers, regions, meta).
+  - name: monitor
+    description: View monitoring jobs.
+  - name: data
+    description: View and modify data sources / feeds.
+  - name: stats
+    description: View usage / QPS on zones and records.

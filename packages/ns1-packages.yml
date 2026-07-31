@@ -1,0 +1,78 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/ns1
+notes: >-
+  First-party NS1 client libraries and tooling published under the ns1 GitHub
+  organization. NS1 is now IBM NS1 Connect; the API host remains api.nsone.net.
+packages:
+  - language: python
+    registry: pypi
+    name: ns1-python
+    url: https://pypi.org/project/ns1-python/
+    repository: https://github.com/ns1/ns1-python
+    install: pip install ns1_python
+    official: true
+    license: MIT
+    status: active
+    notes: Current, actively maintained Python SDK (Python 3.8-3.13).
+  - language: python
+    registry: pypi
+    name: nsone
+    url: https://pypi.org/project/nsone/
+    repository: https://github.com/ns1/nsone-python
+    install: pip install nsone
+    official: true
+    status: legacy
+    notes: Legacy Python SDK, superseded by ns1-python.
+  - language: go
+    registry: go
+    name: github.com/ns1/ns1-go
+    url: https://github.com/ns1/ns1-go
+    repository: https://github.com/ns1/ns1-go
+    install: go get gopkg.in/ns1/ns1-go.v2
+    official: true
+    license: Apache-2.0
+    status: active
+  - language: javascript
+    registry: npm
+    name: ns1
+    url: https://www.npmjs.com/package/ns1
+    repository: https://github.com/ns1/ns1-js
+    install: npm install ns1
+    official: true
+    license: MIT
+    status: maintenance
+    notes: Browser/Node JS client (NS1.com JS API).
+  - language: php
+    registry: composer
+    name: nsone-php
+    url: https://github.com/ns1/nsone-php
+    repository: https://github.com/ns1/nsone-php
+    official: true
+    status: archived
+  - language: python
+    registry: pypi
+    name: ns1cli
+    url: https://github.com/ns1/ns1-cli
+    repository: https://github.com/ns1/ns1-cli
+    install: pip install ns1cli
+    official: true
+    status: archived
+    notes: NS1 command line interface and REPL (archived). See cli/ns1-cli.yml.
+  - language: hcl
+    registry: terraform
+    name: ns1/ns1
+    url: https://registry.terraform.io/providers/ns1/ns1/latest
+    repository: https://github.com/ns1/terraform-provider-ns1
+    install: terraform { required_providers { ns1 = { source = "ns1/ns1" } } }
+    official: true
+    status: active
+    notes: Official Terraform provider for NS1 managed DNS.
+  - language: python
+    registry: github
+    name: ns1-ansible-modules
+    url: https://github.com/ns1/ns1-ansible-modules
+    repository: https://github.com/ns1/ns1-ansible-modules
+    official: true
+    status: active
+    notes: Ansible integration modules for NS1.

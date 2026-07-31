@@ -1,8 +1,15 @@
 aid: ns1
 name: NS1
-description: 'NS1 is a company surfaced as a portfolio company of ggv-capital and added to the API Evangelist
-  network as a stub for enrichment. Sector: networking. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  NS1 (now IBM NS1 Connect) is a managed authoritative DNS, traffic management,
+  and DDI platform. Its data-driven DNS steers traffic with real-time telemetry
+  (Pulsar RUM), health-check monitoring, filter-chain traffic-steering policies,
+  GeoDNS, and dedicated DNS. Everything is programmable through the NS1 REST API
+  at api.nsone.net/v1, authenticated with an X-NSONE-Key API key, and supported by
+  first-party SDKs (Python, Go, JavaScript, PHP), an Ansible module set, a
+  Terraform provider, and a command-line interface. NS1 was acquired by IBM in
+  2022 and is delivered as IBM NS1 Connect; the api.nsone.net API host and v1
+  contract remain unchanged.
 url: https://raw.githubusercontent.com/api-evangelist/ns1/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,18 +17,87 @@ x-backed-by:
 - ggv-capital
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v1
+image: https://github.com/ns1.png
 tags:
 - Company
 - Networking
-apis: []
+- DNS
+- Managed DNS
+- Traffic Management
+- DDI
+- API
+- Infrastructure
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: NS1 Connect API
+  description: >-
+    REST/JSON API for managing NS1 (IBM NS1 Connect) authoritative DNS: zones,
+    records, answers and filter chains, monitoring jobs, notification lists, data
+    sources and feeds, account/team/user/API-key management, usage stats, and
+    Pulsar traffic-steering data. Authenticated with the X-NSONE-Key header.
+  humanURL: https://ns1.com/api
+  baseURL: https://api.nsone.net/v1/
+  properties:
+  - type: Authentication
+    url: authentication/ns1-authentication.yml
+  - type: APIReference
+    url: https://developer.ibm.com/apis/catalog/ns1--ibm-ns1-connect-api/Introduction
+  - type: Documentation
+    url: https://www.ibm.com/docs/en/ns1-connect
 common:
+- type: DomainSecurity
+  url: security/ns1-domain-security.yml
 - type: Website
   url: https://ns1.com/
+- type: DeveloperPortal
+  url: https://developer.ibm.com/apis/catalog/ns1--ibm-ns1-connect-api/Introduction
+- type: Documentation
+  url: https://www.ibm.com/docs/en/ns1-connect
+- type: APIReference
+  url: https://developer.ibm.com/apis/catalog/ns1--ibm-ns1-connect-api/Introduction
+- type: GitHubOrganization
+  url: https://github.com/ns1
+- type: Authentication
+  url: authentication/ns1-authentication.yml
+- type: Conventions
+  url: conventions/ns1-conventions.yml
+- type: ErrorCatalog
+  url: errors/ns1-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/ns1-lifecycle.yml
+- type: Packages
+  url: packages/ns1-packages.yml
+- type: SDKs
+  url: packages/ns1-packages.yml
+- type: CLI
+  url: cli/ns1-cli.yml
+- type: Protobuf
+  url: grpc/ns1-bulkbeacon.proto
+- type: WellKnown
+  url: well-known/ns1-well-known.yml
+- type: LLMsTxt
+  url: llms/ns1-llms.txt

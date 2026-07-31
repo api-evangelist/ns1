@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: searched
+notes: >-
+  Probed the /.well-known/ discovery surface on the live NS1 API host
+  (api.nsone.net) and the legacy web host (ns1.com). The API host returns 404 for
+  all standard discovery documents; ns1.com now 301-redirects to
+  https://www.ibm.com/products/ns1-connect (NS1 is IBM NS1 Connect), so its
+  well-known paths resolve only to the marketing page, not real documents.
+  No security.txt, OIDC, OAuth AS, or api-catalog document is published.
+hosts:
+  - host: https://api.nsone.net
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+  - host: https://ns1.com
+    note: 301 redirect to https://www.ibm.com/products/ns1-connect
+    documents:
+      - path: /.well-known/security.txt
+        status: 301
+      - path: /.well-known/openid-configuration
+        status: 301

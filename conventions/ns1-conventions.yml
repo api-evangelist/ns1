@@ -1,0 +1,56 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/ns1/ns1-python
+docs: https://ns1.com/api
+notes: >-
+  Cross-cutting request/response semantics for the NS1 (IBM NS1 Connect) REST API,
+  captured from the official Python SDK transport layer and a live probe of
+  https://api.nsone.net/v1/. NS1 is a JSON/REST API keyed by X-NSONE-Key.
+authentication:
+  style: api-key-header
+  header: X-NSONE-Key
+  ref: authentication/ns1-authentication.yml
+base_url: https://api.nsone.net/v1/
+media_type: application/json
+versioning:
+  scheme: uri-path
+  current: v1
+  example: https://api.nsone.net/v1/zones
+rate_limiting:
+  model: token-bucket
+  description: >-
+    NS1 applies per-key/per-resource "Sharpen" token-bucket rate limiting. Every
+    response carries the limit state in headers; clients should back off using
+    them. Verified live on an unauthenticated request.
+  headers:
+    - X-RateLimit-By       # dimension the limit applies to (ip | customer | zone | record ...)
+    - X-RateLimit-Limit    # bucket size
+    - X-RateLimit-Period   # seconds to refill one token
+    - X-RateLimit-Remaining
+  observed_example:
+    x_ratelimit_by: ip
+    x_ratelimit_limit: 20
+    x_ratelimit_period: 2
+    x_ratelimit_remaining: 19
+  ref: rate-limits/ns1-rate-limits.yml
+error_envelope:
+  shape: json-object
+  format: non-rfc9457
+  example: '{"message": "..."}'
+  description: >-
+    Errors are returned as a JSON object with a single "message" field plus the
+    appropriate HTTP status. The SDK maps these to ResourceException,
+    AuthException, and RateLimitException.
+  ref: errors/ns1-error-codes.yml
+idempotency:
+  supported: false
+  notes: >-
+    NS1 does not document an Idempotency-Key header. Writes are addressed by
+    resource path (PUT/POST/DELETE on zones/records/etc.), so retries of PUT are
+    naturally idempotent by path, but there is no explicit idempotency-key
+    contract.
+pagination:
+  supported: false
+  notes: >-
+    Core DNS resource collections (zones, records, monitoring jobs) are returned
+    as full JSON arrays without cursor/offset pagination.

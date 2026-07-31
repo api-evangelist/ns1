@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/ns1/ns1-python
+notes: >-
+  Lifecycle and versioning posture for the NS1 (IBM NS1 Connect) REST API.
+  NS1 was acquired by IBM; product and docs now live under IBM NS1 Connect, while
+  the API host remains api.nsone.net with the v1 URI-path version unchanged.
+versioning:
+  scheme: uri-path
+  current: v1
+  example: https://api.nsone.net/v1/zones
+  stability: >-
+    The v1 API has been stable across the NSONE -> NS1 -> IBM NS1 Connect
+    transitions; the SDKs continue to target /v1.
+documentation:
+  legacy: https://ns1.com/api
+  current: https://www.ibm.com/docs/en/ns1-connect
+sdk_lifecycle:
+  - package: ns1-python
+    status: active
+  - package: nsone (nsone-python)
+    status: deprecated
+    superseded_by: ns1-python
+  - package: nsone-php
+    status: archived
+  - package: ns1-cli (ns1cli)
+    status: archived
+status_page:
+  found: false
+  probed:
+    - {url: 'https://status.ns1.com/', result: unreachable}
+  note: >-
+    The former status.ns1.com host no longer resolves; NS1 Connect availability
+    is reported through IBM Cloud status channels.

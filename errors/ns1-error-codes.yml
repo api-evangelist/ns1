@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/ns1/ns1-python/blob/master/ns1/rest/errors.py
+docs: https://ns1.com/api
+format: json-message
+notes: >-
+  NS1 (IBM NS1 Connect) returns errors as a JSON object with a single "message"
+  field alongside the HTTP status code (not RFC 9457 problem+json). The official
+  SDKs classify responses into a small set of exception types. Rate-limit errors
+  carry the X-RateLimit-* headers documented in conventions/.
+envelope:
+  field: message
+  content_type: application/json
+  example: '{"message": "zone not found"}'
+error_classes:
+  - status: 401
+    class: AuthException
+    meaning: Missing or invalid X-NSONE-Key API key.
+    remediation: Provide a valid API key from the NS1 portal in the X-NSONE-Key header.
+  - status: 403
+    class: AuthException
+    meaning: API key lacks permission for the requested resource/operation.
+    remediation: Grant the key the required permission scope in the portal.
+  - status: 404
+    class: ResourceException
+    meaning: Requested resource (zone, record, monitoring job, etc.) does not exist.
+  - status: 400
+    class: ResourceException
+    meaning: Malformed request body or invalid parameters.
+  - status: 429
+    class: RateLimitException
+    meaning: Rate limit exceeded for the current key/resource dimension.
+    remediation: >-
+      Back off using X-RateLimit-Period / X-RateLimit-Remaining; retry after the
+      bucket refills.
+  - status: 5xx
+    class: ResourceException
+    meaning: Server-side error.
