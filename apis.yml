@@ -88,6 +88,11 @@ apis:
   - type: Documentation
     url: https://www.ibm.com/docs/en/ns1-connect
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/ibm/
+  name: IBM
+  x-relationship: acquired
+  x-evidence: "NS1 was acquired by IBM in 2022 and is delivered as IBM NS1 Connect; the api."
 - type: DomainSecurity
   url: security/ns1-domain-security.yml
 - type: Website
