@@ -2,6 +2,13 @@ generated: '2026-10-14'
 method: searched
 checked:
 - datadog/integrations/datadog-integration-edges.yml
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 - okta/integrations/okta-integration-edges.yml
 source:
 - datadog/integrations/datadog-integration-edges.yml
@@ -45,3 +52,81 @@ edges:
   - OKTA_VERIFIED
   features:
   - SAML
+- partner_name: Go module proxy
+  partner: null
+  partner_match: null
+  type: register
+  direction: provider-built
+  category: official SDK (Go)
+  evidence: https://pkg.go.dev/github.com/ns1/ns1-go
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Go module proxy (public registry JSON)
+    spec_file: null
+    language: Go
+    packages:
+    - name: github.com/ns1/ns1-go
+      version: v0.0.0-20261014153111-896d397b94fb
+      released: '2026-10-14'
+      released_field: Time
+      lapsed: false
+      page: https://pkg.go.dev/github.com/ns1/ns1-go
+      repo_leg: github-org:ns1
+      publisher_leg: org:ns1
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
+- partner_name: PyPI
+  partner: pypi
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (Python)
+  evidence: https://pypi.org/project/ns1-python/
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: PyPI (public registry JSON)
+    spec_file: null
+    language: Python
+    packages:
+    - name: ns1-python
+      version: 0.29.0
+      released: '2026-07-15'
+      released_field: upload_time
+      lapsed: false
+      page: https://pypi.org/project/ns1-python/
+      repo_leg: github-org:ns1
+      publisher_leg: email:ns1.com
+      matched_by: domain
+    - name: ns1cli
+      version: 0.9.2
+      released: '2016-07-12'
+      released_field: upload_time
+      lapsed: true
+      page: https://pypi.org/project/ns1cli/
+      repo_leg: domain:ns1.com
+      publisher_leg: email:ns1.com
+      matched_by: domain
+    - name: nsone
+      version: 0.9.100
+      released: '2018-01-31'
+      released_field: upload_time
+      lapsed: true
+      page: https://pypi.org/project/nsone/
+      repo_leg: github-org:ns1
+      publisher_leg: email:ns1.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
